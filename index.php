@@ -38,7 +38,7 @@
     <a class="navbar-brand" href="index.php">Online Examination System</a>          
     </div >
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="<?php echo 'adminlogin.php'; ?>" >HEAD</a></li>   
+        <li><a href="<?php echo 'adminlogin.php'; ?>" >ADMIN</a></li>   
         <li><a href="<?php echo 'Studentsignin.php'; ?>" >SIGN IN</a></li>
         <li><a href="<?php echo 'studentsignup.php'; ?>" >SIGN UP</a></li>
          <li><a href="<?php echo 'teacherlogin.php'; ?>" >TEACHER</a></li>
@@ -48,3 +48,6 @@
 </nav>
 </body>
 </html>
+<?php
+require_once("footer.php");
+?>
