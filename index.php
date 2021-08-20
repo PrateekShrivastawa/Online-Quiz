@@ -6,6 +6,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Online Quiz</title>
     <link  rel="stylesheet" href="css/bootstrap.min.css"/> 
+    <style>
+        h1
+    {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    body
+{
+    background : url('images/bg1.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center center;  
+    background-repeat: no-repeat;  
+    height:100vh;
+    width: 100%;
+}
+.welcome{
+  color:white;
+  font-size:94px;
+}
+    </style>
 </head>
 <body>
 <h1 class="welcome">Welcome All </h1>
