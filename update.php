@@ -51,6 +51,25 @@ $r4 = mysqli_query($con,"DELETE FROM history WHERE eid='$eid' ") or die('Error')
 header("location:teacherdash.php?q=5");
 }
 }
+
+//add quiz
+if(isset($_SESSION['key'])){
+    if(@$_GET['q']== 'addquiz' && $_SESSION['key']=='letspractice') {
+    $name = $_POST['name'];
+    $name= ucwords(strtolower($name));
+    $total = $_POST['total'];
+    $sahi = $_POST['right'];
+    $wrong = $_POST['wrong'];
+    $time = $_POST['time'];
+    $tag = $_POST['tag'];
+    $desc = $_POST['desc'];
+    $id=uniqid();
+    $q3=mysqli_query($con,"INSERT INTO quiz VALUES  ('$id','$name' , '$sahi' , '$wrong','$total','$time' ,'$desc','$tag', NOW() ,'$email')");
+    
+    header("location:dash.php?q=4&step=2&eid=$id&n=$total");
+    }
+    }
+
 ?>
 </body>
 </html>
