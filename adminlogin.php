@@ -57,11 +57,11 @@ label{
     ?>
 <form action="adminlogin.php" name="f1" method="POST">
 <br><br>
-<h2> Head Login Here:</h2>
+<h2> Admin Login Here:</h2>
 <br><br><br>
 <label for="username">Username</label><br><br>
 <div class="input-user">
-          <input class="input100" type="email" id="username" name="un" placeholder="Enter Head Username" required><br>
+          <input class="input100" type="email" id="username" name="un" placeholder="Enter Admin Username" required><br>
 </div>
 <br><br>   
 <label for="password">Password</label><br><br>
