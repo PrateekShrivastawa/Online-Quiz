@@ -18,7 +18,6 @@ h2{
     font-family: inherit;
     font-weight: 500;
     line-height: 1.1;
-    
     margin-left: -125px;
 }
 label{
@@ -32,8 +31,6 @@ label{
 }
 .input-user{
     text-align:center;
-   
-    
 }
 .input100{
     text-align:center;
@@ -92,5 +89,32 @@ label{
 </body>
 </html>
 <?php
-    require_once("footer.php");
+session_start();
+if(isset($_SESSION["email"])){
+session_destroy();
+}
+include_once 'dbConnection.php';
+if(isset($_POST['login'])){
+$email = $_POST['email'];
+$password = $_POST['password'];
+$password=md5($password);
+$result = mysqli_query($con,"SELECT name FROM user WHERE email = '$email' and password = '$password'") or die('Error');
+$count=mysqli_num_rows($result);
+if($count==1){
+$_SESSION["name"] = $name;
+$_SESSION["email"] = $email;
+header("location:account.php");
+}
+else{
     ?>
+        <script>
+        alert('Wrong UserName or Password');
+        window.open('Studentsignin.php','_self');
+        </script>
+        <?php
+}
+}
+?>
+<?php
+require_once("footer.php");
+?>
