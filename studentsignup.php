@@ -130,5 +130,40 @@ label{
 </body>
 </html>
 <?php
+include('dbConnection.php');
+if(isset($_POST['submit1'])){
+    $email = $_POST['email'];
+    $qry="SELECT * FROM `user` WHERE `email`='$email'";
+    $run = mysqli_query($con,$qry);
+    $row = mysqli_num_rows($run);
+    if($row >0){
+        ?>
+        <script>
+        alert('Username Already exits');
+        window.open('index.php','_self');
+        </script>
+    <?php
+    }
+    else{
+        $name = $_POST['name'];
+        $gender = $_POST['gender'];
+        $college = $_POST['college'];
+        $email =$_POST['email'];
+        $mob = $_POST['mob'];
+        $password = $_POST['password'];
+        $password = md5($password);
+        $query = "INSERT INTO `user`(`name`, `gender`, `college`, `email`, `mob`, `password`) VALUES ('$name','$gender','$college','$email','$mob','$password')";
+        $run = mysqli_query($con,$query);
+        ?>
+        <script>
+        alert('Registration Successful');
+        window.open('index.php','_self');
+        </script>
+        <?php
+    }
+
+}
+?>
+<?php
     require_once("footer.php");
     ?>
