@@ -115,9 +115,7 @@ $optionid=$row['optionid'];
 echo'<input type="radio" name="ans" value="'.$optionid.'">'.$option.'<br /><br />';
 }
 echo'<br /><button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;Submit</button></form></div>';
-//header("location:dash.php?q=4&step=2&eid=$id&n=$total");
 }
-//result display
 if(@$_GET['q']== 'result' && @$_GET['eid']) 
 {
 $eid=@$_GET['eid'];
@@ -143,11 +141,10 @@ $s=$row['score'];
 echo '<tr style="color:#990000"><td>Overall Score&nbsp;<span class="glyphicon glyphicon-stats" aria-hidden="true"></span></td><td>'.$s.'</td></tr>';
 }
 echo '</table></div>';
-
 }
+
 ?>
 <!--quiz end-->
-
 <!-- //history start -->
 <?php
 if(@$_GET['q']== 2) 
