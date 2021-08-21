@@ -60,7 +60,7 @@ $q12=mysqli_query($con,"SELECT score FROM history WHERE eid='$eid' AND email='$e
 $rowcount=mysqli_num_rows($q12);  
 if($rowcount == 0){
   echo '<tr><td>'.$c++.'</td><td>'.$title.'</td><td>'.$total.'</td><td>'.$sahi*$total.'&nbsp;</td>
-  <td><a title="Open quiz description" href="account.php?q=1&fid='.$eid.'"><b><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span></b></a></td>
+  <td><a title="Open quiz description" href="StudentDash.php?q=1&fid='.$eid.'"><b><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span></b></a></td>
   <td><b><a href="StudentDash.php?q=quiz&step=2&eid='.$eid.'&n=1&t='.$total.'" class="pull-right btn sub1" style="margin:0px;background:#99cc32"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>&nbsp;<span class="title1"><b>Start</b></span></a></b></td></tr>';
 }
 else
@@ -71,6 +71,23 @@ echo '<tr style="color:#99cc32"><td>'.$c++.'</td><td>'.$title.'&nbsp;<span title
 }
 $c=0;
 echo '</table></div>';
+}?>
+
+<!----quiz reading portion starts--->
+
+<?php if(@$_GET['fid']) {
+echo '<br />';
+$eid=@$_GET['fid'];
+$result = mysqli_query($con,"SELECT * FROM quiz WHERE eid='$eid' ") or die('Error');
+while($row = mysqli_fetch_array($result)) {
+  $title = $row['title'];
+  $date = $row['date'];
+  $date= date("d-m-Y",strtotime($date));
+  $intro = $row['intro'];
+  
+echo '<div class="panel"<a title="Back to Archive" href="update.php?q1=2"><b><span class="glyphicon glyphicon-level-up" aria-hidden="true"></span></b></a><h2 style="text-align:center; margin-top:-15px;font-family: "Ubuntu", sans-serif;"><b>'.$title.'</b></h1>';
+ echo '<div class="mCustomScrollbar" data-mcs-theme="dark" style="margin-left:10px;margin-right:10px; max-height:450px; line-height:35px;padding:5px;"><span style="line-height:35px;padding:5px;">-&nbsp;<b>DATE:</b>&nbsp;'.$date.'</span>
+<span style="line-height:35px;padding:5px;"></span><br />'.$intro.'</div></div>';}
 }?>
 
 <!-- //history start -->
