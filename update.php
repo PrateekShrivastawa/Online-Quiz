@@ -22,6 +22,18 @@ $result = mysqli_query($con,"DELETE FROM user WHERE email='$demail' ") or die('E
 header("location:Admindash.php?q=1");
 }
 }
+
+//delete Teacher
+
+if(isset($_SESSION['key'])){
+    if(@$_GET['demail1'] && $_SESSION['key']=='letspractice') {
+    $demail1=@$_GET['demail1'];
+    
+    $result = mysqli_query($con,"DELETE FROM admin WHERE email='$demail1' and role ='Teacher' ") or die('Error');
+    header("location:Admindash.php?q=5");
+    }
+    }
 ?>
+
 </body>
 </html>
