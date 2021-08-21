@@ -77,3 +77,27 @@ label{
 </form>
 </body>
 </html>
+<?php
+include_once 'dbConnection.php';
+if(isset($_POST['login'])){
+  $email = $_POST['un'];
+  $password = $_POST['ps'];
+  $result = mysqli_query($con,"SELECT email FROM admin WHERE email = '$email' and password = '$password' and role = 'head'") or die('Error');
+  $count=mysqli_num_rows($result);
+  if($count==1){
+  session_start();
+  $_SESSION["name"] = 'Admin';
+  $_SESSION["key"] ='letspractice';
+  $_SESSION["email"] = $email;
+  header("location:headdash.php?q=0");
+  }
+  else{
+    ?>
+        <script>
+        alert('Wrong Username or Password');
+        window.open('adminlogin.php','_self');
+        </script>
+        <?php
+}
+}
+?>
