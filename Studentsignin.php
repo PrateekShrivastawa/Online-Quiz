@@ -70,14 +70,14 @@ label{
     <h2> Student Login Here :</h2>
 <br><br><br><br>
 <label for="username">Email-ID</label><br><br>
-<div class="input-user" data-validate="Username">
+<div class="input-user">
           <input class="input100" type="email" name="email" class="form-control" placeholder="Enter Email Id" required><br>
           <span class="focus-input100"></span>
 </div>
 <br><br> 
 
 <label for="password">Password</label><br><br>
-<div class="input-user" data-validate="Password">
+<div class="input-user" >
           <input class="input100" type="password" class="form-control"  name="password" placeholder="Enter Password" required><br>
           <span class="focus-input100"></span>
 </div>
