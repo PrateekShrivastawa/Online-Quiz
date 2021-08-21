@@ -63,7 +63,7 @@ label{
 <?php
     require_once("header.php");
     ?>
-    <form action="" method="post">
+    <form action="teacherlogin.php" method="post">
     <br><br><br>
 <h2> Teacher Login Here :</h2>
 <br><br><br><br>
