@@ -103,7 +103,7 @@ $count=mysqli_num_rows($result);
 if($count==1){
 $_SESSION["name"] = $name;
 $_SESSION["email"] = $email;
-header("location:account.php");
+header("location:StudentDash.php?q=1");
 }
 else{
     ?>

@@ -1,12 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Account-Login </title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Head DeshBoard </title>
+<link  rel="stylesheet" href="css/bootstrap.min.css"/>
+ <link rel="stylesheet" href="css/main.css">
+ <script src="js/jquery.js" type="text/javascript"></script>
+  <script src="js/bootstrap.min.js"  type="text/javascript"></script>
 </head>
-<body>
-    <h1>Account Login Page</h1>
+<body  style="background:#eff0da;">
+<div class="header" style="background-color:black">
+<div class="row">
+
+</div>
+<?php
+ include_once 'dbConnection.php';
+session_start();
+$email=$_SESSION['email'];
+  if(!(isset($_SESSION['email']))){
+header("location:index.php");
+}
+else
+{
+$name = $_SESSION['name'];
+include_once 'dbConnection.php';
+echo '<span class="pull-right top title1" ><span class="log1"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;Hello,</span> <a href="headdash.php" class="log log1">'.$email.'</a>&nbsp;|&nbsp;<a href="logout.php?q=Admindash.php" class="log"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;Signout</button></a></span>';
+}?>
+</div>
+<!-- admin start-->
+<!--navigation menu-->
+<nav class="navbar navbar-default title1">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="StudentDash.php?q=1"><b>Dashboard - Student</b></a>
+    </div>
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li <?php if(@$_GET['q']==1) echo'class="active"'; ?>><a href="StudentDash.php?q=1">Home</a></li>
+        <li <?php if(@$_GET['q']==2) echo'class="active"'; ?>><a href="StudentDash.php?q=2">History</a></li>
+		<li <?php if(@$_GET['q']==3) echo'class="active"'; ?>><a href="StudentDash.php?q=3">Ranking</a></li>
+      </ul> 
+          </div>
+  </div>
+</nav>
+
+<?php if(@$_GET['q']==1) {
+
+$result = mysqli_query($con,"SELECT * FROM quiz ORDER BY date DESC") or die('Error');
+echo  '<div class="panel"><table class="table table-striped title1">
+<tr style="color:black"><td><b>S.N.</b></td><td><b>Topic</b></td><td><b>Total question</b></td><td><b>Marks</b></td><td><b>Description</b></td><td></td><td></td></tr>';
+$c=1;
+while($row = mysqli_fetch_array($result)) {
+  $title = $row['title'];
+  $total = $row['total'];
+  $sahi = $row['sahi'];
+  $eid = $row['eid'];
+$q12=mysqli_query($con,"SELECT score FROM history WHERE eid='$eid' AND email='$email'" )or die('Error98');
+$rowcount=mysqli_num_rows($q12);  
+if($rowcount == 0){
+  echo '<tr><td>'.$c++.'</td><td>'.$title.'</td><td>'.$total.'</td><td>'.$sahi*$total.'&nbsp;</td>
+  <td><a title="Open quiz description" href="account.php?q=1&fid='.$eid.'"><b><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span></b></a></td>
+  <td><b><a href="StudentDash.php?q=quiz&step=2&eid='.$eid.'&n=1&t='.$total.'" class="pull-right btn sub1" style="margin:0px;background:#99cc32"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>&nbsp;<span class="title1"><b>Start</b></span></a></b></td></tr>';
+}
+else
+{
+echo '<tr style="color:#99cc32"><td>'.$c++.'</td><td>'.$title.'&nbsp;<span title="This quiz is already solve by you" class="glyphicon glyphicon-ok" aria-hidden="true"></span></td><td>'.$total.'</td><td>'.$sahi*$total.'&nbsp;</td>
+  </tr>';
+}
+}
+$c=0;
+echo '</table></div>';
+}?>
+
 </body>
 </html>
+<?php
+require_once("footer.php");
+?>

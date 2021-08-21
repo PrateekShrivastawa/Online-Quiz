@@ -25,7 +25,7 @@ else
 {
 $name = $_SESSION['name'];
 include_once 'dbConnection.php';
-echo '<span class="pull-right top title1" ><span class="log1"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;Hello,</span> <a href="headdash.php" class="log log1">'.$email.'</a>&nbsp;|&nbsp;<a href="logout.php?q=headdash.php" class="log"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;Signout</button></a></span>';
+echo '<span class="pull-right top title1" ><span class="log1"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;Hello,</span> <a href="Admindash.php" class="log log1">'.$email.'</a>&nbsp;|&nbsp;<a href="logout.php?q=Admindash.php" class="log"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;Signout</button></a></span>';
 }?>
 </div>
 <!-- admin start-->
@@ -33,7 +33,7 @@ echo '<span class="pull-right top title1" ><span class="log1"><span class="glyph
 <nav class="navbar navbar-default title1">
   <div class="container-fluid">
     <div class="navbar-header">
-      <a class="navbar-brand" href="headdash.php?q=0"><b>Dashboard - head</b></a>
+      <a class="navbar-brand" href="Admindash.php?q=0"><b>Dashboard - head</b></a>
     </div>
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
@@ -136,7 +136,7 @@ echo '
 <div class="form-group">
   <label class="col-md-12 control-label" for="name"></label>  
   <div class="col-md-12">
-  <input id="email" name="email" placeholder="Enter Teacher Email" class="form-control input-md" type="email">
+  <input id="email" name="email" placeholder="Enter Teacher Email" class="form-control input-md" type="email" required >
     
   </div>
 </div>
@@ -147,7 +147,7 @@ echo '
 <div class="form-group">
   <label class="col-md-12 control-label" for="total"></label>  
   <div class="col-md-12">
-  <input id="password" name="password" placeholder="Enter password" class="form-control input-md" type="password">
+  <input id="password" name="password" placeholder="Enter password" class="form-control input-md" type="password" required>
     
   </div>
 </div>
