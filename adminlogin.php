@@ -89,7 +89,7 @@ if(isset($_POST['login'])){
   $_SESSION["name"] = 'Admin';
   $_SESSION["key"] ='letspractice';
   $_SESSION["email"] = $email;
-  header("location:headdash.php");
+  header("location:Admindash.php");
   }
   else{
     ?>
