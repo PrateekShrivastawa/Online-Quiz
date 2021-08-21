@@ -101,3 +101,6 @@ if(isset($_POST['login'])){
 }
 }
 ?>
+<?php
+require_once("footer.php");
+?>
