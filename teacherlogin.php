@@ -90,7 +90,6 @@ label{
 <?php 
 include_once 'dbConnection.php';
 if(isset($_POST['login'])){
-$ref=@$_GET['q'];
 $email = $_POST['un'];
 $password = $_POST['ps'];
 $result = mysqli_query($con,"SELECT email FROM admin WHERE email = '$email' and password = '$password' and role = 'Teacher'") or die('Error');
