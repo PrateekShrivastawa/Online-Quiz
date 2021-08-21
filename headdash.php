@@ -165,6 +165,26 @@ echo '
 ?>
 <!--add Teacher end-->
 
+<!--Teacher remove function start-->
+<?php if(@$_GET['q']==5) {
+
+$result = mysqli_query($con,"SELECT * FROM admin where role ='Teacher' ") or die('Error');
+echo  '<div class="panel"><table class="table table-striped title1">
+<tr><td><b>Email</b></td><td><b>Delete</b></td></tr>';
+$c=1;
+while($row = mysqli_fetch_array($result)) {
+  
+    $email = $row['email'];
+  
+
+  echo '<tr><td>'.$email.'</td>
+  <td><a title="Delete User" href="update.php?demail1='.$email.'"><b><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></b></a></td></tr>';
+}
+$c=0;
+echo '</table></div>';
+
+}?>
+<!--teacher remove function end-->
 
 </body>
 </html>
