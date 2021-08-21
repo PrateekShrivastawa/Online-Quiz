@@ -35,7 +35,7 @@
 <nav class="navbar navbar-inverse navbar-fixed-top"> 
   <div class="container-fluid">
     <div class="navbar-header">  
-    <a class="navbar-brand" href="index.php">Online Examination System</a>          
+    <a class="navbar-brand" href="index.php">Online Quiz System</a>          
     </div >
       <ul class="nav navbar-nav navbar-right">
         <li><a href="<?php echo 'adminlogin.php'; ?>" >ADMIN</a></li>   

@@ -1,0 +1,54 @@
+.left{
+    display: inline-block;
+    position:absolute;
+    left: 34px;
+    top: 22px
+}
+.mid{
+    display: block;
+    width : 39%; 
+    margin : 17px auto;
+}
+.right{
+    position:absolute;
+    right: 31px;
+    top: 22px;
+}
+.navbar li{
+    display: inline-block;
+    font-size:20px
+}
+.navbar {
+    display: inline-block;
+}
+.navbar li a{
+    color: white;
+    text-decoration:none;
+    padding: 34px 23px;
+}
+.navbar li a:hover{
+    text-decoration:underline;
+    color:brown;
+}
+.left img{
+    width:91px;
+    filter: invert(100%);
+}
+.btn{
+    margin: 11px 9px;
+    color:white;
+    background-color:brown;
+    padding: 3px 8px
+    
+}
+.btn:hover{
+    color:grey;
+    cursor:pointer;
+}
+h1{
+    display: block;
+    width:62%;
+     margin: 220px auto;
+     font-size:101px
+   
+}
