@@ -122,6 +122,50 @@ echo '</table></div>';}
 
 ?>
 <!-- ranking end -->
+
+<?php
+if(@$_GET['q']==4) {
+echo ' 
+<div class="row">
+<span class="title1" style="margin-left:40%;font-size:30px;"><b>Enter Teacher Details</b></span><br /><br />
+ <div class="col-md-3"></div><div class="col-md-6">   <form class="form-horizontal title1" name="form" action="signadmin.php?q=headdash.php?q=4"  method="POST">
+<fieldset>
+
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-12 control-label" for="name"></label>  
+  <div class="col-md-12">
+  <input id="email" name="email" placeholder="Enter Teacher Email" class="form-control input-md" type="email">
+    
+  </div>
+</div>
+
+
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-12 control-label" for="total"></label>  
+  <div class="col-md-12">
+  <input id="password" name="password" placeholder="Enter password" class="form-control input-md" type="password">
+    
+  </div>
+</div>
+
+<div class="form-group">
+  <label class="col-md-12 control-label" for=""></label>
+  <div class="col-md-12"> 
+    <input  type="submit" style="margin-left:45%" class="btn btn-primary" value="Submit" class="btn btn-primary"/>
+  </div>
+</div>
+
+</fieldset>
+</form></div>';
+}
+?>
+<!--add Teacher end-->
+
+
 </body>
 </html>
 <?php
