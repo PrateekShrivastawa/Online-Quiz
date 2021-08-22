@@ -64,7 +64,7 @@ if(isset($_SESSION['key'])){
     $tag = $_POST['tag'];
     $desc = $_POST['desc'];
     $id=uniqid();
-    $q3=mysqli_query($con,"INSERT INTO quiz VALUES  ('$id','$name' , '$sahi' , '$wrong','$total','$time' ,'$desc','$tag', NOW() ,'$email')");
+    $q3=mysqli_query($con,"INSERT INTO quiz VALUES  ('$id','$name' , '$sahi' ,'$total','$desc','$tag', NOW() ,'$email')");
     
     header("location:teacherdash.php?q=4&step=2&eid=$id&n=$total");
     }

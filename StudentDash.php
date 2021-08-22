@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Head DeshBoard </title>
-<link  rel="stylesheet" href="css/bootstrap.min.css"/>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link  rel="stylesheet" href="css/bootstrap.min.css"/>
  <link rel="stylesheet" href="css/main.css">
  <script src="js/jquery.js" type="text/javascript"></script>
   <script src="js/bootstrap.min.js"  type="text/javascript"></script>
 </head>
+<body>
 <body  style="background:#eff0da;">
 <div class="header" style="background-color:black">
 <div class="row">
@@ -25,7 +27,7 @@ else
 {
 $name = $_SESSION['name'];
 include_once 'dbConnection.php';
-echo '<span class="pull-right top title1" ><span class="log1"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;Hello,</span> <a href="headdash.php" class="log log1">'.$email.'</a>&nbsp;|&nbsp;<a href="logout.php?q=Admindash.php" class="log"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;Signout</button></a></span>';
+echo '<span class="pull-right top title1" ><span class="log1"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;&nbsp;&nbsp;&nbsp;Hello,</span> <a href="teacherdash.php" class="log log1">'.$email.'</a>&nbsp;|&nbsp;<a href="logout.php?q=teacherdash.php" class="log"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>&nbsp;Signout</button></a></span>';
 }?>
 </div>
 <!-- admin start-->
@@ -49,7 +51,7 @@ echo '<span class="pull-right top title1" ><span class="log1"><span class="glyph
 
 $result = mysqli_query($con,"SELECT * FROM quiz ORDER BY date DESC") or die('Error');
 echo  '<div class="panel"><table class="table table-striped title1">
-<tr style="color:black"><td><b>S.N.</b></td><td><b>Topic</b></td><td><b>Total question</b></td><td><b>Marks</b></td><td><b>Description</b></td><td></td><td></td></tr>';
+<tr style="color:black"><td><b>S.N.</b></td><td><b>Topic</b></td><td><b>Total question</b></td><td><b>Marks</b></td><td><b>positive</b></td><td><b>Description</b></td><td></td><td></td></tr>';
 $c=1;
 while($row = mysqli_fetch_array($result)) {
   $title = $row['title'];
@@ -59,13 +61,13 @@ while($row = mysqli_fetch_array($result)) {
 $q12=mysqli_query($con,"SELECT score FROM history WHERE eid='$eid' AND email='$email'" )or die('Error98');
 $rowcount=mysqli_num_rows($q12);  
 if($rowcount == 0){
-  echo '<tr><td>'.$c++.'</td><td>'.$title.'</td><td>'.$total.'</td><td>'.$sahi*$total.'&nbsp;</td>
+  echo '<tr><td>'.$c++.'</td><td>'.$title.'</td><td>'.$total.'</td><td>'.$sahi*$total.'</td><td>'.$sahi.'&nbsp</td>
   <td><a title="Open quiz description" href="StudentDash.php?q=1&fid='.$eid.'"><b><span class="glyphicon glyphicon-folder-open" aria-hidden="true"></span></b></a></td>
   <td><b><a href="StudentDash.php?q=quiz&step=2&eid='.$eid.'&n=1&t='.$total.'" class="pull-right btn sub1" style="margin:0px;background:#99cc32"><span class="glyphicon glyphicon-new-window" aria-hidden="true"></span>&nbsp;<span class="title1"><b>Start</b></span></a></b></td></tr>';
 }
 else
 {
-echo '<tr style="color:#99cc32"><td>'.$c++.'</td><td>'.$title.'&nbsp;<span title="This quiz is already solve by you" class="glyphicon glyphicon-ok" aria-hidden="true"></span></td><td>'.$total.'</td><td>'.$sahi*$total.'&nbsp;</td>
+echo '<tr style="color:#99cc32"><td>'.$c++.'</td><td>'.$title.'&nbsp;<span title="This quiz is already solve by you" class="glyphicon glyphicon-ok" aria-hidden="true"></span></td><td>'.$total.'</td><td>'.$sahi*$total.'</td><td>'.$sahi.'&nbsp;</td>
   </tr>';
 }
 }
@@ -80,9 +82,11 @@ echo '<br />';
 $eid=@$_GET['fid'];
 $result = mysqli_query($con,"SELECT * FROM quiz WHERE eid='$eid' ") or die('Error');
 while($row = mysqli_fetch_array($result)) {
+ // $name = $row['name'];
   $title = $row['title'];
   $date = $row['date'];
   $date= date("d-m-Y",strtotime($date));
+  //$time = $row['time'];
   $intro = $row['intro'];
   
 echo '<div class="panel"<a title="Back to Archive" href="update.php?q1=2"><b><span class="glyphicon glyphicon-level-up" aria-hidden="true"></span></b></a><h2 style="text-align:center; margin-top:-15px;font-family: "Ubuntu", sans-serif;"><b>'.$title.'</b></h1>';
@@ -90,7 +94,6 @@ echo '<div class="panel"<a title="Back to Archive" href="update.php?q1=2"><b><sp
 <span style="line-height:35px;padding:5px;"></span><br />'.$intro.'</div></div>';}
 }?>
 
-<!--quiz start-->
 <?php
 if(@$_GET['q']== 'quiz' && @$_GET['step']== 2) {
 $eid=@$_GET['eid'];
@@ -116,6 +119,7 @@ echo'<input type="radio" name="ans" value="'.$optionid.'">'.$option.'<br /><br /
 }
 echo'<br /><button type="submit" class="btn btn-primary"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span>&nbsp;Submit</button></form></div>';
 }
+//result display
 if(@$_GET['q']== 'result' && @$_GET['eid']) 
 {
 $eid=@$_GET['eid'];
@@ -141,12 +145,13 @@ $s=$row['score'];
 echo '<tr style="color:#990000"><td>Overall Score&nbsp;<span class="glyphicon glyphicon-stats" aria-hidden="true"></span></td><td>'.$s.'</td></tr>';
 }
 echo '</table></div>';
-}
 
+}
 ?>
-<!--quiz end-->
-<!-- //history start -->
+
+
 <?php
+//history start
 if(@$_GET['q']== 2) 
 {
 $q=mysqli_query($con,"SELECT * FROM history WHERE email='$email' ORDER BY date DESC " )or die('Error197');
@@ -171,9 +176,8 @@ echo '<tr><td>'.$c.'</td><td>'.$title.'</td><td>'.$qa.'</td><td>'.$r.'</td><td>'
 }
 echo'</table></div>';
 }
-?>
 
-<?php
+//ranking start
 if(@$_GET['q']== 3) 
 {
 $q=mysqli_query($con,"SELECT * FROM rank  ORDER BY score DESC " )or die('Error223');
@@ -197,8 +201,16 @@ echo '<tr><td style="color:#99cc32"><b>'.$c.'</b></td><td>'.$name.'</td><td>'.$g
 }
 echo '</table></div>';}
 ?>
+
+
+
+</div></div></div></div>
+
+
+
 </body>
 </html>
+
 <?php
 require_once("footer.php");
 ?>
